@@ -1,0 +1,84 @@
+PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS 
+Instituto de Informática 
+Unidade Praça da Liberdade
+Curso: Engenharia de Software
+Prof.: Laerte Xavier
+Disciplina: Laboratório de Experimentação de Software 
+Aluno: Anderson Heraclito Gaspardine Júnior
+
+Laboratório 1 - Análise de Repositórios Populares
+
+RQ 01. Sistemas populares são maduros/antigos? 
+(Métrica: idade do repositório (calculado a partir da data de sua criação)
+ 
+RQ 02. Sistemas populares recebem muita contribuição externa?
+(Métrica: total de pull requests aceitas)
+
+RQ 03. Sistemas populares lançam releases com frequência?
+(Métrica: total de releases)
+
+RQ 04. Sistemas populares são atualizados com frequência?
+Métrica: tempo até a última atualização (calculado a partir da data de última atualização)
+
+RQ 05. Sistemas populares são escritos nas linguagens mais populares?
+Métrica: linguagem primária de cada um desses repositórios
+
+RQ 06. Sistemas populares possuem um alto percentual de issues fechadas?
+Métrica: razão entre número de issues fechadas pelo total de issues
+
+Hipóteses
+
+Em minha análise sobre os 1000 repositórios com mais estrelas no Github, chamados aqui de repositórios populares, e considerando as métricas propostas, pode-se supor que para as RQs 01 a 06: 
+os repositórios populares são considerados maduros, isto é possuem acima de 1460 dias (4 anos); 
+os repositórios populares recebem muita contribuição externa, onde um valor acima de 500 pull requests  aceitas indica essa elevada contribuição externa; 
+os repositórios populares não lançam releases com frequência sendo baixo 3 ou menos releases por ano, ou o valor absoluto de 12 releases (3 por ano vezes o tempo para ser considerado um repositório maduro) ; 
+os repositórios populares são atualizados com frequência, se a última atualização foi realizada a até 15 dias ele está com atualização recente;
+os repositórios populares são escritos nas linguagens mais populares, conforme apresentada pelo artigo de referência;
+os repositórios populares possuem um alto percentual de issues fechadas, em valores de razão acima de 80% de issues fechadas é considerado alto;
+
+Metodologia 
+
+Os dados foram obtidos em 05/03/2020, através de script de consulta via api do GraphQL, conforme observado o repositório do github.
+
+Para responder às questões de pesquisa considerei como ponto de comparação para definição dos conceitos propostos nas hipóteses distância da média para a mediana de cada métrica proposta, considerei também o desvio padrão da média com um fator de análise de quão dispersos estão os resultados em relação a média.
+
+Os dados foram dispostos em uma tabela utilizando o software Google Planilhas para realizar os cálculos estatísticos referentes  a cada métrica.
+
+Resultados Obtidos 
+
+RQ 01: A mediana de idade dos repositórios populares (em dias) é de 1978 (mil novecentos e setenta e oito) ou aproximadamente 5 anos e 5 meses. A média de idade é de 2011,86 (dois mil e onze e oitenta e seis centésimos) novamente em dias. Com um desvio padrão de 895 dias.
+
+RQ 02: Os repositórios populares aceitam em média 1315,92 contribuições externas, enquanto que a mediana é de 280 pull requests aceitas. O desvio padrão calculado foi de 3873,55.
+
+RQ 03: A mediana de releases para o conjunto é igual a 7 releases, contudo a média de releases é de 36,81 e o desvio padrão encontrado foi de 71.
+
+RQ 04: Desde a última atualização a mediana de dias que se passaram, foram de 12 dias e a média  foi de 12,1 dias com desvio padrão de 0,32 dias.
+
+RQ 05: Os resultados referentes às linguagens utilizadas estão dispostos no gráfico que pode ser acessado através do link abaixo:
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRe3EMSbRMVLizv_YTTteKUY-h0PG_CdIkOXvxxKDlTvtUE_uuoWZCwXIGV-jZ7RDHvovC0drXdm3S8/pubchart?oid=1089082042&amp
+
+RQ 06: Os repositórios possuem em média 76,22% de razão de closed issues e total issues sendo a mediana de 84,88% e desvio padrão 25,37% desta razão
+
+Discussão sobre as hipóteses e os resultados.
+
+
+RQ 01:
+A hipótese inicial proposta por mim (H0) mostrou-se assertiva, pois os resultados obtidos indicaram que a média (2011,82) e a mediana (1978) ficaram próximas, o que significa, que a  apresentam uma relativa simetria na distribuição dos dados e acima do valor em dias onde já poderia se considerar um repositório maduro, conforme explicado no campo de hipóteses, em uma análise por contagem dos dados, 70,5% dos repositórios analisados possuem mais de 4 anos ou 1460 dias desde a criação, contudo há de se considerar que existem casos extremos que influenciam nas medições.
+
+RQ 02:
+Após a análise dos dados foi constatado que a média (1.315,92 pull requests aceitas) não se mostraria um bom indicador para esta análise pois existem valores iguais 0, de acordo com a função =conta.se(intervalo ; 0) há 12 registros com 0 pull requests aceitas e também valores muito ao extremo (Máximo = 59.271) e dispersos a média (desvio padrão = 3.873,55), analisando então a mediana (280 pull requests aceitas) já podemos ter uma noção de que os repositórios não aceitam tantas contribuições externas quanto o que eu presumi, fazendo uma contagem condicional apenas 35,2% dos repositórios aceitaram mais de 500 pull requests, então pode-se concluir que a hipótese inicial mostrou-se equivocada e os repositórios populares não aceitam tanta contribuição externa.
+
+RQ 03:
+	A hipótese inicial para a resposta desta questão indica que os repositórios populares não lançam releases com frequência, tendo por valor de corte a razão de 3 releases por ano ou 12 releases até o tempo de amadurecimento (4 anos). Novamente a média do total de releases (36,81) é afetada pela existência de campos zerados (392), com isso a mediana do total do releases indica 7 releases totais sem considerar a idade do repositório, medida que não fornece uma análise precisa da situação. Olhando então o cálculo da mediana de releases por ano, têm -se cerca de  1,44 release por ano, resultado que indica que a hipótese estava certa.
+
+RQ 04:
+	A hipótese desta questão foi certeira no ponto, pois uma análise dos resultados indicou que o tempo mínimo desde a última atualização foi de 12 dias e tempo máximo foi de 14 dias, então os repositórios continuam sendo atualizados frequentemente.
+
+
+RQ 05:
+	Conforme o observado no gráfico de resultados e na hipótese inicial, os repositórios mais populares são escritos nas linguagens mais populares.
+
+RQ 06:
+	Nesta questão foi levantado pela hipótese inicial que um alto percentual da razão entre closed issues / total issues seria acima de 80%. A média obtida foi de 76,2%, mas novamente esta média não pode ser levada em consideração da análise em função de campos zerados desta vez foram 51 dentre os 1000 repositórios analisados. Assim analisando a mediana percebe-se um percentual maior entre a razão closed issues / total issues (84,88%) e que no total 58,8% dos repositórios analisados possuem mais de 80% da razão closed issues / total issues, concluindo mais uma vez como acertada a hipótese inicial.
+	
